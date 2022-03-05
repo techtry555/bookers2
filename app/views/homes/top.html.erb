@@ -1,0 +1,47 @@
+<!-- topページ -->
+
+<p id="notice"></p>
+
+<div class="container">
+  <div class="row">
+
+    <!-- 【mx-auto】は、marginの左右をサイズがauto。つまり、コンテンツ中央寄せ。 -->
+    <!-- 【col-11】は、画面の横幅を12個のカラムに分割し、その内の11個分を使用。-->
+    <!-- 【col-sm-10】は、画面サイズがsmall(=タブレット)以上の時は10分割する。-->
+    <!-- 【col-lg-8】は、画面サイズがlarge(=デスクトップPC)以上の時は8分割する。-->
+    <!-- 【col-xl-6】は、画面サイズがextra-large(=大型モニタ)以上の時は6分割する。-->
+    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
+      <h1>welcome to <i class="fas fa-book"></i><strong>Bookers</strong>  !!</h1>
+      <p>In  <i class="fas fa-book"></i><strong>Bookers</strong>, </p>
+      <p>you can share and exchange  your opinions , inpressions , and emotions</p>
+      <p> about various books!</p>
+
+      <!-- 【btn-○】で、ボタンの種類を表す。【btn-wrapper】は、ボタンを包む範囲。-->
+      <!-- 【col-10 mx-auto】は、画面の横幅を12個のカラムに分割して、その内10個を使用。-->
+      <!-- 【mx-auto】は、marginの左右をサイズauto。つまり中央寄せ。-->
+      <div class="btn-wrapper col-10 mx-auto">
+
+        <div class="row">
+
+          <!-- 【btn-info】は、ボタンの色を指定する名前(1~8の7番目)。空色な感じ。-->
+          <!-- 【btn-sm】は、ボタンのサイズが中サイズ。(-lgは大サイズ。-xは小サイズ) -->
+          <!-- 【btn-block】は、画面幅いっぱいのサイズを指定する。 -->
+          <!-- 【mb-3】は、margin-bottomのサイズが3。 -->
+          <!--a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>-->
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+
+        </div>
+
+        <div class="row">
+
+           <!-- 【btn-success】は、ボタンの色を指定する名前(1~8の3番目)。緑色。-->
+          <!--a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">Sign up</a>-->
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
