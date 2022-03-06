@@ -1,3 +1,4 @@
+# deviseはcontrollerがないので、devise関係はここに記述。
 class ApplicationController < ActionController::Base
 
   # devise利用の機能 (ユーザー登録、ログイン認証など) が使われる前に、
@@ -18,8 +19,10 @@ class ApplicationController < ActionController::Base
   # strongパラメータと同様の機能。
   # configure_permitted_parametersメソッドでは、devise_parameter_sanitizer.permitメソッドを使うことで、
   # ユーザー登録 (sign_up) の際に、ユーザー名 (name) のデータ操作を許可する。
+  # deviseの初期設定では、email.passwardを受け取れるようになっている。
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+     ## 今回、仕様変更なのか？emailがデフォルトで設定されないエラーがででたので追加した。
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
   end
 
 end

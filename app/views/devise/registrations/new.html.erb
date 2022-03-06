@@ -4,18 +4,15 @@
 <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <!-- フォームの追加。nameカラムの追加  -->
+  <!-- 追加 (nameカラム) -->
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-
-
+  <!-- 追加ここまで -->
   <div class="field">
     <%= f.label :email %><br />
-
-    <!-- 一部消去した。 -->
-    <%= f.email_field :email,  autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
