@@ -20,7 +20,6 @@
       <!-- 【col-10 mx-auto】は、画面の横幅を12個のカラムに分割して、その内10個を使用。-->
       <!-- 【mx-auto】は、marginの左右をサイズauto。つまり中央寄せ。-->
       <div class="btn-wrapper col-10 mx-auto">
-
         <div class="row">
 
           <!-- 【btn-info】は、ボタンの色を指定する名前(1~8の7番目)。空色な感じ。-->
@@ -29,19 +28,14 @@
           <!-- 【mb-3】は、margin-bottomのサイズが3。 -->
           <!--a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>-->
           <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-
         </div>
-
         <div class="row">
 
            <!-- 【btn-success】は、ボタンの色を指定する名前(1~8の3番目)。緑色。-->
           <!--a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">Sign up</a>-->
           <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
-
         </div>
-
       </div>
-
     </div>
   </div>
 </div>

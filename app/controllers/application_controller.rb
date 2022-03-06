@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   # configure_permitted_parametersメソッドが実行される。
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # sing up後の遷移先の設定。deviseが用意しているメソッド。
+  # 今回は、users#show へ。
+  def after_sign_in_path_for(resource)
+    user_path(current_user.id)
+  end
+
+
   # protected は、呼び出された他のcontrollerからも、参照できる。
   # ちなみに private は、記述したcontroller内のみでしか、参照できない。
   protected
