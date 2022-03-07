@@ -1,2 +1,18 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<!-- User infoを押した後の遷移先ページ -->
+<h2>User info</h2>
+
+<!--form_withの部分 -->
+<% form_with @---, do %>
+
+  <label>Name</label>
+  <%= f.text_field :user_name %>
+  
+  <label>Image</label>
+  <%= f.file_field :image, accept: "image/*" %>
+  
+  <label>Introduction</label>
+  <%= f.text_area :user_introduction %>
+  
+  <%= f.submit 'Update User' %>
+
+<% end %>

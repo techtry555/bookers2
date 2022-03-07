@@ -23,7 +23,17 @@
 
         <h2>New book</h2>
         <!-- form_withの部分 -->
-
+        <!-- Ajax通信は、local:trueで同期通信の設定 -->
+        <% form_with model: @book, local:true do |f| %>
+        
+          <label>Title</label>
+          <%= f.text_field :title %>
+        
+          <label>Opinion</label>
+          <%= f.text_area :body %>
+          
+          <h4><%= f.submit 'Create Book' %></h4>
+        <% end %>
 
         <div>
           <h2>Books</h2>
