@@ -18,8 +18,8 @@ class BooksController < ApplicationController
     if @book.save
       ###flash[:notice] = "You have created book successfully."
       # ifでtrueの時、基本的に redirect_to。
-      # user_pathは、users/:idで、users#show。
-      redirect_to user_path(user_id)
+      # 【book_path】は、books/:idで、books#show。
+      redirect_to book_path(@book.id)
     else
       @books = Book.all
       # ifでfalseの時、基本的に render。
@@ -42,4 +42,5 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+
 end

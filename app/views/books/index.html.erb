@@ -45,7 +45,7 @@
 
       <!-- 【mt-3】は、margin-top-3 -->
       <h2 class="mt-3">New book</h2>
-
+      
       <!-- form_withの部分 -->
       <%= form_with model: @book, local:true do |f| %>
 
@@ -57,11 +57,9 @@
         <!-- 【form-group】は、ラベルやフォーム部品をグルーピングする外側のdivタグで利用。-->
         <!-- つまり、余白の見た目を揃えてくれる。-->
         <div class="form-group">
-
           <!-- labelタグは、フォームの構成部品とその項目名(ラベル)を関連づける要素。-->
           <!-- つまり、(htmlのinput,textarea等に対応する)入力欄に説明をつける。 -->
           <label for="book_title">Title</label>
-
           <!-- 【form-control】は、フォーム部品に設定する。-->
           <!-- フォーム部品の大きさやレイアウトを整える。 -->
           <%= f.text_field :title, class: "form-control book_title" %>
