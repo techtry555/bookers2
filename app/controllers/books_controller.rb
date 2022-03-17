@@ -12,6 +12,9 @@ class BooksController < ApplicationController
   def create
     # 空のモデルを作成し、入力データを入れ、@bookに格納。
     @book = Book.new(book_params)
+    # アソシエーションの部分。
+    # ログイン中のユーザーidを、追加したuser_idカラムにかく
+    @book.user_id = current_user.id
     # flashメッセージ は、ifでtrueを返すなら、flash[:notice] = "" & redirect_to
     ## flashメッセージ は、ifでfalseを返すなら、flash.new[:notice] = "" & render
     ## 今回は、flashメッセージのサクセスメッセージだけ (で、エラーメッセージの方は無い)。
@@ -40,6 +43,7 @@ class BooksController < ApplicationController
   private
   # ストロングパラメータ
   def book_params
+    ## user_id 追加?? => 不要。
     params.require(:book).permit(:title, :body)
   end
 
