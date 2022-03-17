@@ -18,12 +18,12 @@ class BooksController < ApplicationController
     if @book.save
       ###flash[:notice] = "You have created book successfully."
       # ifでtrueの時、基本的に redirect_to。
-      # 【book_path】は、books/:idで、books#show。
+      # 【book_path】は、books/:id、books#show。
       redirect_to book_path(@book.id)
     else
       @books = Book.all
       # ifでfalseの時、基本的に render。
-      # indexは、/booksで、books#index。
+      # 【:index】は、/books、books#index。
       render :index
     end
   end
