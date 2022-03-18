@@ -33,11 +33,20 @@ class BooksController < ApplicationController
 
 
   def show
-    
+    # viewでの表示は1冊なので、単数表示@book。
+    # urlのidに対応したDBの情報を引数として渡し、1件取得する。
+    @book = Book.find(params[:id])
   end
 
 
   def edit
+  end
+
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    # Bookのindexページへ。
+    redirect_to books_path
   end
 
 

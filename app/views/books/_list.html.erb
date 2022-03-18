@@ -3,14 +3,14 @@
 <!-- instance変数からlocal変数へ。【@books => books】 -->
 
 <!-- ページ左側カラム3/12個分 -->
-<div class='col-md-3'>
+<div class="col-md-3">
   <h2>User info</h2>
   <table class="table">
     <tr>
-      <!-- 【image_tag】は、画像表示のメソッド -->
-      <!-- (ログイン中のuserの) user画像が存在すれば、-->
+      <!-- 【image_tag】は、画像表示のメソッド。 -->
+      <!-- (現在ログイン中のユーザーの) 画像(=image)が存在すれば、-->
       <% if current_user.image.attached? %>-->
-        <%= image_tag user.image, size: "63*63" %>
+        <%= image_tag current_user.image, size: "63*63" %>
       <!-- (ログイン中のuserの) user画像が存在しなければ、-->
       <% else %>
         <%= image_tag 'no_image1', size: "63*63" %>
@@ -27,7 +27,7 @@
       <th><%= current_user.introduction %></th>
     </tr>
   </table>
-  <div class='row'>
+  <div class="row">
     <!-- icon押すと、users#editへ -->
     <!-- 【btn btn-〇〇(色,サイズ)】は、色やサイズを自由に指定する。secondaryは灰色。 -->
     <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
