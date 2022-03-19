@@ -59,3 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 ## devise 追加
 gem 'devise'
+
+## kaminariのインストール準備の記述。paginate(パジネイト/ページ割り)するために導入。
+# 【ページネーション】(=パジネーション)は、一つの長い文章を複数ページに分割表示すること。
+gem 'kaminari','~> 1.2.1'

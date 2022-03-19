@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     # 空のモデルを作成し、入力データを入れ、@bookに格納。
     @book = Book.new(book_params)
     # アソシエーションの部分。
-    # ログイン中のユーザーidを、追加したuser_idカラムにかく
+    # ログイン中のユーザーidを、追加したuser_idカラムに上書き。
     @book.user_id = current_user.id
     # flashメッセージ は、ifでtrueを返すなら、flash[:notice] = "" & redirect_to
     ## flashメッセージ は、ifでfalseを返すなら、flash.new[:notice] = "" & render
