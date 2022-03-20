@@ -25,10 +25,12 @@
           <!-- 全レコードから取得した情報を1つずつ処理。-->
           <% @users.each do |user| %>
             <tr>
-              <!-- 投稿ユーザーの画像表示。link_to のテキスト部分をimage_tag〜 にすればOK。-->
-              <td><%= link_to image_tag user.user.get_profile_image(40,40) %></td>
-              <td><%= link_to 'Show', user_path(user.id) %></td>
+              <!-- 投稿ユーザーの画像表示-->
+              <!-- image_tag("画像名"or メソッド, class:"クラス名") -->
+              <!-- 【user.user.】を【current_user.】に直したらOK. -->
+              <td><%= image_tag(current_user.get_profile_image(40,40)) %></td>
               <td><%= user.name %></td>
+              <td><%= link_to 'Show', user_path(user.id) %></td>
             </tr>
           <% end %>
           </tbody>

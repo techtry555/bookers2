@@ -40,12 +40,21 @@ class BooksController < ApplicationController
 
 
   def edit
+    @book = Book.find(params[:id])
   end
+
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    # book_path => books#show
+    redirect_to book_path(book.id)
+  end
+
 
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    # Bookのindexページへ。
+    # books_path => books#index
     redirect_to books_path
   end
 
@@ -53,7 +62,6 @@ class BooksController < ApplicationController
   private
   # ストロングパラメータ
   def book_params
-    ## user_id 追加?? => 不要。
     params.require(:book).permit(:title, :body)
   end
 

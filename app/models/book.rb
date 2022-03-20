@@ -5,5 +5,7 @@ class Book < ApplicationRecord
 
   # Bookモデルで画像を使う宣言
   has_one_attached :image
+  
+  d
 
 end
