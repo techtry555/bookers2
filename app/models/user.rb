@@ -28,10 +28,10 @@ class User < ApplicationRecord
     # 画像が設定(添付)されない場合は、
     unless profile_image.attached?
       # app/assets/images に格納されている app/assets/images/no_image.jpg という画像を、
-      # デフォルト画像としてActiveStorageに格納する。
+      ## デフォルト画像としてActiveStorageに格納する。
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
 
-      # 格納した画像 (file_path) を、表示する。
+      # 格納した画像 (file_path) を、添付(=表示)する。
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
 

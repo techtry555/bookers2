@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   def show
     # urlのidに対応する、Userモデルが管理するDBの情報を1件取得。
     @user = User.find(params[:id])
-    # Userモデルに紐づいたbookのカラム？？
-    @books = @user.book
+    # Userモデルに紐づいたbookのカラムを追加。user.rbの 【has_many :books,~】より。
+    @books = @user.books
   end
 
 
@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    # user_path => users#show
-    # (@user.id)忘れずに。
+    # user_path => users#show。(@user.id)忘れずに。
     redirect_to user_path(@user.id)
   end
 
