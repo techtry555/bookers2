@@ -21,7 +21,7 @@ class BooksController < ApplicationController
     if @book.save
       ###flash[:notice] = "You have created book successfully."
       # ifでtrueの時、基本的に redirect_to。
-      # 【book_path】は、books/:id、books#show。
+      # 【book_path】は、 books/:id => books#show。
       redirect_to book_path(@book.id)
     else
       @books = Book.all
@@ -31,13 +31,11 @@ class BooksController < ApplicationController
     end
   end
 
-
   def show
     # viewでの表示は1冊なので、単数表示@book。
     # urlのidに対応したDBの情報を引数として渡し、1件取得する。
     @book = Book.find(params[:id])
   end
-
 
   def edit
     @book = Book.find(params[:id])
@@ -49,7 +47,6 @@ class BooksController < ApplicationController
     # book_path => books#show
     redirect_to book_path(book.id)
   end
-
 
   def destroy
     book = Book.find(params[:id])
