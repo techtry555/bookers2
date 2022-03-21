@@ -1,12 +1,13 @@
 <!--Books#indexのページ-->
 
 <!-- 【px-5】は、padding-左右-全sizeで5,【px-sm-0】は、padding-左右-smallsizeで5 -->
-<div class ="cantainer px-5 px-sm-0">
+<div class="cantainer px-5 px-sm-0">
   <!-- バリデーションによるerror messageの表示 -->
   <div>
-    <% if @book.errors.any? %>
-      <%= @book.errors.count %> 件のエラーが発生しました
-      <ul>
+      <h3><p class="text-danger">
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %> error prohibited this obj from being saved:</p></h3>
+      <ul class="text-danger">
         <% @book.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
