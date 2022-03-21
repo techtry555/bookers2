@@ -2,10 +2,10 @@
 
 <!-- 【px-5】は、padding-左右-全sizeで5,【px-sm-0】は、padding-左右-smallsizeで5 -->
 <div class="cantainer px-5 px-sm-0">
-  <!-- バリデーションによるerror messageの表示 -->
+  <!-- バリデーションによるerror messageの表示。ここから -->
   <div>
-      <h3><p class="text-danger">
-      <% if @book.errors.any? %>
+    <h3><p class="text-danger">
+    <% if @book.errors.any? %>
       <%= @book.errors.count %> error prohibited this obj from being saved:</p></h3>
       <ul class="text-danger">
         <% @book.errors.full_messages.each do |message| %>
@@ -14,6 +14,7 @@
       </ul>
     <% end %>
   </div>
+  <!-- ここまで-->
   <div class="row">
     <!-- 部分テンプレートを呼び出す設定 -->
     <!-- 【render '部分テンプレファイル名(_省略)', ローカル変数: 渡す値】 -->

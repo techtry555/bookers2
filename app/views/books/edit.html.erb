@@ -1,8 +1,22 @@
 <!-- bookのeditページ -->
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>Editing Book</h1>
+  		<!-- バリデーションによるerror messageの表示。ここから -->
+      <div>
+        <h3><p class="text-danger">
+        <% if @book.errors.any? %>
+          <%= @book.errors.count %> error prohibited this obj from being saved:</p></h3>
+          <ul class="text-danger">
+            <% @book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <!-- ここまで-->
   		<!--form_withの部分-->
   		<%= form_with model: @book, local:true do |f| %>
   		  <div class="form-group">

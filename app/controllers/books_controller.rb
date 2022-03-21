@@ -12,8 +12,8 @@ class BooksController < ApplicationController
   def create
     # 空のモデルを作成し、入力データを入れ、@bookに格納。
     @book = Book.new(book_params)
-    # アソシエーションの部分。
-    # ログイン中のユーザーidを、追加したuser_idカラムに上書き。
+    # 見落としやすい点
+    # アソシエーションの部分。現在ログイン中のuser_idを、Bookモデムのuser_idにする。
     @book.user_id = current_user.id
     # flashメッセージ は、ifでtrueを返すなら、flash[:notice] = "メッセージ" & redirect_to
     # flashメッセージ は、ifでfalseを返すなら、flash.new[:notice] = "メッセージ" & render
@@ -39,11 +39,18 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    flash[:notice] = "You have updated book successfully."
-    # book_path => books#show
-    redirect_to book_path(book.id)
+    # urlに紐つくレコードを1件取得し、@bookへ格納
+    @book = Book.find(params[:id])
+    # 見落としやすい点
+    @book.user_id = current_user.id
+    # 入力した値で更新できたら
+    if @book.update(book_params)
+      flash[:notice] = "You have updated book successfully."
+      # book_path => books#show
+      redirect_to book_path(@book.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
