@@ -18,12 +18,12 @@
     </tr>
     <tr>
       <th>name</th>
-      <!-- ↓登録内容を受け取る。-->
+      <!-- 登録内容を受け取る。-->
       <th><%= current_user.name %></th>
     </tr>
     <tr>
       <th>introduction</th>
-      <!-- ↓登録内容を受け取る。-->
+      <!-- 登録内容を受け取る。-->
       <th><%= current_user.introduction %></th>
     </tr>
   </table>
@@ -40,8 +40,7 @@
 
   <!-- 【mt-3】は、margin-top-3 -->
   <h2 class="mt-3">New book</h2>
-  <!-- form_withの部分 -->
-  <!-- @book => book -->
+  <!-- form_withの部分。@book => book  -->
   <%= form_with model: book, local:true do |f| %>
     <!-- フォームを利用する基本的な使い方は、-->
     <!-- フォーム部品(input,textarea,selsect)に form-controlクラスを追加し、-->
