@@ -71,6 +71,11 @@
       </nav>
     </header>
 
+    <!-- flash表示領域を確保する。-->
+    <% flash.each do |message_type, message| %>
+      <!-- <p>タグにclass=""で、bootstapを利用する。-->
+      <p class="text-success"><%= message %></p>
+    <% end %>
     <%= yield %>
 
     <!-- フッターの設定 -->
