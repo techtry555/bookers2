@@ -15,18 +15,15 @@ class BooksController < ApplicationController
     # アソシエーションの部分。
     # ログイン中のユーザーidを、追加したuser_idカラムに上書き。
     @book.user_id = current_user.id
-    # flashメッセージ は、ifでtrueを返すなら、flash[:notice] = "" & redirect_to
-    ## flashメッセージ は、ifでfalseを返すなら、flash.new[:notice] = "" & render
-    ## 今回は、flashメッセージのサクセスメッセージだけ (で、エラーメッセージの方は無い)。
+    # flashメッセージ は、ifでtrueを返すなら、flash[:notice] = "メッセージ" & redirect_to
+    # flashメッセージ は、ifでfalseを返すなら、flash.new[:notice] = "メッセージ" & render
     if @book.save
-      ###flash[:notice] = "You have created book successfully."
-      # ifでtrueの時、基本的に redirect_to。
+      flash[:notice] = "You have created book successfully."
       # 【book_path】は、 books/:id => books#show。
       redirect_to book_path(@book.id)
     else
       @books = Book.all
-      # ifでfalseの時、基本的に render。
-      # 【:index】は、/books、books#index。
+      # 【:index】は、/books => books#index。
       render :index
     end
   end

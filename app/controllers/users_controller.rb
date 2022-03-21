@@ -23,6 +23,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    # flashの表示。【flash[:キー名]="表示したいメッセージ"】。キー名は自由。
+    flash[:notice] = "You have updated user successfully."
     # user_path => users#show。(@user.id)忘れずに。
     redirect_to user_path(@user.id)
   end
