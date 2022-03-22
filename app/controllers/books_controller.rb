@@ -32,7 +32,7 @@ class BooksController < ApplicationController
     # viewでの表示は1冊なので、単数表示@book。
     # urlのidに対応したDBの情報を引数として渡し、1件取得する。
     @book = Book.find(params[:id])
-    # 空のモデルを渡して、新規登録後のフォーム部分を空欄にする。
+    # 空のモデルを渡して、新規登録後の空欄にする。
     @book_new = Book.new
   end
 
