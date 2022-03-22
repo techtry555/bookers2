@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
   # resourcesでルート設定
   # (new,) index,show,edit は,HTTPリクエストがget。
-  resources :users, only: [:index, :show, :edit, :update]
-  resources :books, only: [:index, :show, :edit, :create, :destroy, :update]
+  resources :users, only: [:index, :show, :edit, :create, :update]
+  resources :books, only: [:index, :show, :edit, :create, :update, :destroy]
 
 
 end

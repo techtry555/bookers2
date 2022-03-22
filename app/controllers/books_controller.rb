@@ -32,6 +32,8 @@ class BooksController < ApplicationController
     # viewでの表示は1冊なので、単数表示@book。
     # urlのidに対応したDBの情報を引数として渡し、1件取得する。
     @book = Book.find(params[:id])
+    # 空のモデルを渡して、新規登録後のフォーム部分を空欄にする。
+    @book_new = Book.new
   end
 
   def edit
@@ -55,7 +57,9 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    # 削除するBookモデルのレコードを1件取得。
     book = Book.find(params[:id])
+    # それを削除。
     book.destroy
     # books_path => books#index
     redirect_to books_path

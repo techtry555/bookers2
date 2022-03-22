@@ -1,13 +1,11 @@
 <!-- Books#show のページ -->
 
-<!-- 【px-5】は、padding-左右-全sizeで5,【px-sm-0】は、padding-左右-smallsizeで5 -->
+<!-- 【px-5】は、padding-左右-全sizeで5,【px-sm-0】は、padding-左右-smallsizeで0 -->
 <div class ="cantainer px-5 px-sm-0">
   <div class="row">
-
     <!-- 部分テンプレートを呼び出す設定 -->
-    <%= render 'list', book: @book %>
-
-      <!-- 【offset-md-1】は、先頭に余白。つまり、真ん中に余白作る。 -->
+    <%= render 'list', book: @book_new %>
+      <!-- 【offset-md-1】は先頭に余白。md=middle。つまり、真ん中に余白作る。 -->
       <div class="col-md-8 offset-md-1" >
         <h2>Book detail</h2>
         <table class="table">
@@ -19,10 +17,12 @@
               <td><%= link_to image_tag(@book.user.get_profile_image(40,40)), user_path(current_user.id) %><br><%= link_to @book.user.name, user_path(current_user.id) %></td>
               <td><%= link_to @book.title, book_path(@book.id) %></td>
               <td><%= @book.body %></td>
-              <!-- 構文  【link_to "戻る", hoge_path, class: 'btn btn-default'】 -->
-              <td><%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %></td>
-              <!-- ru【book_path】は、DELETE /books/:id => books#destroy -->
-              <td><%= link_to "Destroy", book_path, method: :delete, class: 'btn btn-sm btn-danger', "data-confirm" => "本当に消しますか？" %></td>
+              <% if @book.user == current_user %>
+                <!-- 構文  【link_to "戻る", hoge_path, class: 'btn btn-default'】 -->
+                <td><%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %></td>
+                <!-- 【book_path】は、DELETE /books/:id => books#destroy -->
+                <td><%= link_to "Destroy", book_path, method: :delete, class: 'btn btn-sm btn-danger', "data-confirm" => "本当に消しますか？" %></td>
+              <% end %>
             </tr>
           </tbody>
         </table>
