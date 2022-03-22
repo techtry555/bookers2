@@ -25,8 +25,7 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2 }
   validates :name, length: { maximum: 20 }
 
-  # 空でない,かつ最大200文字まで
-  validates :introduction, presence: true
+  # 最大50文字まで
   validates :introduction, length: { maximum: 50 }
 
 

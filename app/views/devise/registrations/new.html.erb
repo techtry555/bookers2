@@ -7,12 +7,13 @@
   <!-- 追加 (nameカラム) -->
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <!-- 【autofocus: true】は、ページ開いた時に最初にフォーカスされる所。-->
+    <%= f.text_field :name, autofocus: true %>
   </div>
   <!-- 追加ここまで -->
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email,  autocomplete: "email" %>
   </div>
 
   <div class="field">
