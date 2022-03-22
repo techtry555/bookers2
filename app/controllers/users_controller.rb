@@ -3,16 +3,18 @@ class UsersController < ApplicationController
     # Userの空のモデルの管理する全レコードを取得し、それをviewへ渡す@usersへ格納。(複数よりs付けた)。
     @users = User.all
     # Bookの空のモデルを作り、それをviewへ渡す@bookに格納。
-    @user = User.new
+    @book = Book.new
   end
 
 
   def show
     # urlのidに対応する、Userモデルが管理するDBの情報を1件取得。
     @user = User.find(params[:id])
+    @book_new = Book.new
     # Userモデルに紐づいた、Bookモデルのカラム(title,body,user_id)を@booksへ格納。
     # user.rbの 【has_many :books,~】より。
     @books = @user.books
+
   end
 
 
