@@ -39,9 +39,10 @@ class BooksController < ApplicationController
   end
 
   def update
-    # urlに紐つくレコードを1件取得し、@bookへ格納
+    # urlに紐つくレコードを1件取得し、@bookへ格納。
     @book = Book.find(params[:id])
-    # 見落としやすい点
+    # 見落としやすい点。Bookモデルのカラムは(title/body/user_id)。
+    # 取得したカラム(use_id)を現在ログイン中のuser_idに更新。
     @book.user_id = current_user.id
     # 入力した値で更新できたら
     if @book.update(book_params)

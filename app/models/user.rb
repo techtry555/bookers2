@@ -15,9 +15,19 @@ class User < ApplicationRecord
   ## (profile_imageという名前で) ActiveStorageに、プロフィール画像を保存する設定。
   has_one_attached :profile_image
 
-
   # 追記 (Userモデルに対し、Bookモデルを1:Nにアソシエート)
   has_many :books, dependent: :destroy
+
+  # バリデーション設定
+  # 空でない,一意性,2~20文字まで
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :name, length: { minimum: 2 }
+  validates :name, length: { maximum: 20 }
+
+  # 空でない,かつ最大200文字まで
+  validates :introduction, presence: true
+  validates :introduction, length: { maximum: 50 }
 
 
   ## get_profile_imageメソッドを作成。

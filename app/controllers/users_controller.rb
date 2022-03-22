@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def show
     # urlのidに対応する、Userモデルが管理するDBの情報を1件取得。
     @user = User.find(params[:id])
-    # Userモデルに紐づいたbookのカラムを追加。user.rbの 【has_many :books,~】より。
+    # Userモデルに紐づいた、Bookモデルのカラム(title,body,user_id)を@booksへ格納。
+    # user.rbの 【has_many :books,~】より。
     @books = @user.books
   end
 
@@ -21,12 +22,17 @@ class UsersController < ApplicationController
 
 
   def update
+    # urlに紐つくレコードを1件取得し(email/password/name/introduction)、@userへ格納。
     @user = User.find(params[:id])
-    @user.update(user_params)
-    # flashの表示。【flash[:キー名]="表示したいメッセージ"】。キー名は自由。
-    flash[:notice] = "You have updated user successfully."
-    # user_path => users#show。(@user.id)忘れずに。
-    redirect_to user_path(@user.id)
+    # 入力した値で更新できたら
+    if @user.update(user_params)
+      # flashの表示。【flash[:キー名]="表示したいメッセージ"】。キー名は自由。
+      flash[:notice] = "You have updated user successfully."
+      # user_path => users#show。(@user.id)忘れずに。
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   private
