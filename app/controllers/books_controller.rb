@@ -1,4 +1,10 @@
 class BooksController < ApplicationController
+  # 【before_action】は、各アクションが実行される前に呼ばれる。
+  # ログイン済みのユーザのみアクセスできる、の意。2つのアクションのみ適応。
+  #before_action :authenticate_user!, only: [:edit, :update]
+  # 他人が本の編集ページに遷移できなくする設定。【correct_user】は、ストロングパラメータ後に記述。
+  #before_action :correct_user, only: [:edit, :update]
+
 
   def index
     # Bookモデルの管理する全レコードを取得し、それをviewへ渡す@booksへ格納。(複数よりs付けた)。
@@ -12,8 +18,8 @@ class BooksController < ApplicationController
   def create
     # 空のモデルを作成し、入力データを入れ、@bookに格納。
     @book = Book.new(book_params)
-    # 見落としやすい点
-    # アソシエーションの部分。現在ログイン中のuser_idを、Bookモデムのuser_idにする。
+    # 重要点。投稿者とログインユーザをひも付ける。
+    # ログイン中のuser_idを、Bookモデムのuser_idに格納。
     @book.user_id = current_user.id
     # flashメッセージ は、ifでtrueを返すなら、flash[:notice] = "メッセージ" & redirect_to
     # flashメッセージ は、ifでfalseを返すなら、flash.new[:notice] = "メッセージ" & render
@@ -36,9 +42,11 @@ class BooksController < ApplicationController
     @book_new = Book.new
   end
 
+
   def edit
     @book = Book.find(params[:id])
   end
+
 
   def update
     # urlに紐つくレコードを1件取得し、@bookへ格納。
@@ -72,4 +80,12 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
+  # ログインユーザの確認
+  #def ensure_correct_user
+  #  @book = Book.find(params[:id])
+  #  # ログインユーザのidがユーザのidでない場合
+  #  unless @book.user == current_user
+  #   redirect_to books_path
+  #  end
+  #end
 end

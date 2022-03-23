@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def index
     # Userの空のモデルの管理する全レコードを取得し、それをviewへ渡す@usersへ格納。(複数よりs付けた)。
     @users = User.all

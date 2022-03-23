@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
-
   # protected は、呼び出された他のcontrollerからも、参照できる。
   # ちなみに private は、記述したcontroller内のみでしか、参照できない。
   protected
