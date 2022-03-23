@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     @book = Book.new
   end
 
-
   def show
     # urlのidに対応する、Userモデルが管理するDBの情報を1件取得。
     @user = User.find(params[:id])
@@ -22,9 +21,7 @@ class UsersController < ApplicationController
     # Userモデルに紐づいた、Bookモデルのカラム(title,body,user_id)を@booksへ格納。
     # user.rbの 【has_many :books,~】より。
     @books = @user.books
-
   end
-
 
   def edit
     @user = User.find(params[:id])
@@ -45,6 +42,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   # ストロングパラメータ
   def user_params
     # profile_imageの追加

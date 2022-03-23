@@ -39,7 +39,7 @@
           <!-- 全レコードから取得した情報を1つずつ処理。-->
           <% @books.each do |book| %>
             <tr>
-              <!-- 投稿ユーザーの画像表示-->
+              <!-- 投稿ユーザーの画像表示。modelで記述したメソッドを呼び出して使用。-->
               <!-- link_to image_tag("画像名"or メソッド, class:"クラス名"), パス-->
               <!-- user_path => users#show -->
               <td><%= link_to image_tag(book.user.get_profile_image(40,40)), user_path(book.user_id) %></td>

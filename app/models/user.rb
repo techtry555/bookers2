@@ -7,12 +7,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # Userモデルで画像を使う宣言。imageカラムが追加されたかの様に扱える。
-  # ↓これ無いとbookのindexページの左上(user info)でエラー出る。
-  has_one_attached :image
-
-  ## bookのindexページ右側(Books)作成の際に追加。
-  ## (profile_imageという名前で) ActiveStorageに、プロフィール画像を保存する設定。
+  # (profile_imageという名前で) ActiveStorageに、プロフィール画像を保存する設定。actionみたいなものか。
   has_one_attached :profile_image
 
   # 追記 (Userモデルに対し、Bookモデルを1:Nにアソシエート)
@@ -33,22 +28,20 @@ class User < ApplicationRecord
   ## actionとは少し異なり、特定の処理を名前で呼び出すことができる。
   ## Userモデルの中に記述することで、この処理(=メソッド)を呼び出せる。(カラムを扱うように。)
   def get_profile_image(width, height)
-
     # 画像が設定(添付)されない場合は、
     unless profile_image.attached?
       # app/assets/images に格納されている app/assets/images/no_image.jpg という画像を、
       ## デフォルト画像としてActiveStorageに格納する。
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
-
       # 格納した画像 (file_path) を、添付(=表示)する。
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
 
     # 画像を、縦横共に100pxのサイズに変換する。
     # variant は、(形/異なる)(名/変形)の意味。
-    ##profile_image.variant(resize_to_limit: [100, 100]).processed
+    #profile_image.variant(resize_to_limit: [100, 100]).processed
     ## ↓に修正。利便性を高める為。100→変数に。
-    # メソッドに対して引数を設定し、引数に設定した値に画像サイズを変換する。
+    ## メソッドに対して引数を設定し、引数に設定した値に画像サイズを変換する。
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 

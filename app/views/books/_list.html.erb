@@ -1,4 +1,4 @@
-<!-- 部分テンプレートファイル。 -->
+<!-- 部分テンプレートファイル -->
 <!-- 共通部分(User info)(New book)を共通利用。-->
 <!-- instance変数からlocal変数へ直す。(例)【@books => books】 -->
 
@@ -7,15 +7,8 @@
   <!--画面左上の【User info】-->
   <h2>User info</h2>
   <table class="table">
-    <tr>
-      <!-- 【image_tag】は、画像表示のメソッド。 -->
-      <!-- (現在ログイン中のユーザーの) 画像(=image)が存在すれば、-->
-      <% if current_user.image.attached? %>-->
-        <%= image_tag current_user.image, size: "63*63" %>
-      <!-- (ログイン中のuserの) user画像が存在しなければ、-->
-      <% else %>
-        <%= image_tag 'no_image1', size: "63*63" %>
-      <% end %>
+    <!-- modelで記述したメソッドをここで呼び出し使用。 -->
+    <tr><%= image_tag current_user.get_profile_image(100,100) %>
     </tr>
     <tr>
       <th>name</th>
