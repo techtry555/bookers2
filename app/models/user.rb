@@ -35,8 +35,8 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       # 格納した画像 (file_path) を、添付(=表示)する。
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    end
 
+    end
     # 画像を、縦横共に100pxのサイズに変換する。
     # variant は、(形/異なる)(名/変形)の意味。
     #profile_image.variant(resize_to_limit: [100, 100]).processed
