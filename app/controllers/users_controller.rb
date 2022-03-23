@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
-  
+
+  # 【before_action】は、各アクションが実行される前に呼ばれる。
+  # ログイン済みのユーザのみアクセスできる、の意。2つのアクションのみ適応。deviseが用意するもの。
+  before_action :authenticate_user!, only: [:edit, :update]
+  # 他人が本の編集ページに遷移できなくする設定。【correct_user】は、ストロングパラメータ後に記述。
+  before_action :ensure_correct_user, only: [:edit, :update]
+
+
   def index
     # Userの空のモデルの管理する全レコードを取得し、それをviewへ渡す@usersへ格納。(複数よりs付けた)。
     @users = User.all
@@ -44,4 +51,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
+  # ログインユーザの確認
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    # ログインユーザのidがユーザのidでない場合
+    unless @user.id == current_user.id
+      # user_path => users#show
+      redirect_to user_path(current_user)
+    end
+  end
 end

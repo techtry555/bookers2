@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
+
   # 【before_action】は、各アクションが実行される前に呼ばれる。
-  # ログイン済みのユーザのみアクセスできる、の意。2つのアクションのみ適応。
-  #before_action :authenticate_user!, only: [:edit, :update]
+  # ログイン済みのユーザのみアクセスできる、の意。2つのアクションのみ適応。deviseが用意するもの。
+  before_action :authenticate_user!, only: [:edit, :update]
   # 他人が本の編集ページに遷移できなくする設定。【correct_user】は、ストロングパラメータ後に記述。
-  #before_action :correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update]
 
 
   def index
@@ -81,11 +82,12 @@ class BooksController < ApplicationController
   end
 
   # ログインユーザの確認
-  #def ensure_correct_user
-  #  @book = Book.find(params[:id])
-  #  # ログインユーザのidがユーザのidでない場合
-  #  unless @book.user == current_user
-  #   redirect_to books_path
-  #  end
-  #end
+  def ensure_correct_user
+    @book = Book.find(params[:id])
+    # ログインユーザのidがユーザのidでない場合
+    unless @book.user == current_user
+      # books_path => books#index
+      redirect_to books_path
+    end
+  end
 end
