@@ -20,14 +20,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    #
-    if @book.user == current_user
-      render "edit"
-    else
-      redirect_to books_path
-    end
   end
-
 
   def update
     # urlに紐つくレコードを1件取得し(email/password/name/introduction)、@userへ格納。
