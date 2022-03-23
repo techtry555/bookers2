@@ -43,7 +43,7 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  # テストのために変更(:stderr =>:silence)
+  ## テストのために変更(:stderr =>:silence)
   config.active_support.deprecation = :silence
 
   # Raise exceptions for disallowed deprecations.

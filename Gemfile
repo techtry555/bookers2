@@ -46,7 +46,12 @@ group :development do
   gem 'spring'
 end
 
+# デフォルトの記述は削除し、代わりに以下の４つのgemを記述
 group :test do
+  gem 'capybara', '>= 2.15'
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
