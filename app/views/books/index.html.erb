@@ -18,7 +18,7 @@
   <div class="row">
     <!-- 部分テンプレートを呼び出す設定 -->
     <!-- 【render '部分テンプレファイル名(_省略)', ローカル変数: 渡す値】 -->
-    <%= render 'list', book: @book %>
+    <%= render 'list', book: @book, user: current_user %>
       <!-- 【offset-md-1】は、先頭に余白。つまり、真ん中に余白作る。 -->
       <div class="col-md-8 offset-md-1" >
         <h2>Books</h2>
