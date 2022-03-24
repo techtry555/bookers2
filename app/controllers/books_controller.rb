@@ -85,7 +85,8 @@ class BooksController < ApplicationController
   # ログインユーザの確認
   def ensure_correct_user
     @book = Book.find(params[:id])
-    # ログインユーザのidがユーザのidでない場合
+    # ログインユーザが今見ているユーザでない場合
+    # @book.user_id == current_user.id でも可。【.】や【_】の使い方に習熟しよう!!
     unless @book.user == current_user
       # books_path => books#index
       redirect_to books_path
