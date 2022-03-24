@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   # aboutページの名前付きルーティング
-  get 'homes/about' => 'homes#about', as: 'about'
+  # homes/about (URL) にアクセスした場合は、homesコントローラのaboutアクションが実行
+  # 今回は見本に合わせて【home/about】に変更
+  get 'home/about' => 'homes#about', as: 'about'
 
 
   # resourcesでルート設定
