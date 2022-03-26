@@ -14,7 +14,6 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-
   # 保存画面のアクション定義
   def create
     # 空のモデルを作成し、入力データを入れ、@bookに格納。
@@ -44,11 +43,9 @@ class BooksController < ApplicationController
     @user = @book.user
   end
 
-
   def edit
     @book = Book.find(params[:id])
   end
-
 
   def update
     # urlに紐つくレコードを1件取得し、@bookへ格納。
@@ -77,6 +74,7 @@ class BooksController < ApplicationController
 
 
   private
+
   # ストロングパラメータ
   def book_params
     params.require(:book).permit(:title, :body)
